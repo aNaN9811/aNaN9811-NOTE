@@ -16,7 +16,7 @@ Tinker是微信官方的Android热补丁解决方案，它支持动态下发代�
 
 
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-7aa035427289a886.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/415/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-7aa035427289a886.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/415/format/webp)
 
 Tinker热更新的优势
 
@@ -507,7 +507,7 @@ Tinker不支持修改AndroidManifest.xml，Tinker不支持新增四大组件；
 
 
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-95bd49610d8a5437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-95bd49610d8a5437.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
 Bugly基线版本
 
@@ -517,9 +517,7 @@ Bugly基线版本
 
 **在android studio的右边选择gradle找到我们接入热更新的model 进入build中选择生成的基准包类型：这里可以是Release和Debug版本** 
 
-
-
-![img](https:////upload-images.jianshu.io/upload_images/4029470-f65681e9de657974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/379/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-f65681e9de657974.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/379/format/webp)
 
 生成基准包
 
@@ -531,7 +529,7 @@ Bugly基线版本
 
 
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-64647219ab1e80b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/344/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-64647219ab1e80b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/344/format/webp)
 
 生成的基准Apk目录
 
@@ -541,7 +539,7 @@ Bugly基线版本
 
 **如果你没有开启混淆是不会有mapping.txt文件的，需要在Moudle的build.gradle文件中开启混淆**
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-09502d906eb0ec62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/647/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-09502d906eb0ec62.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/647/format/webp)
 
 开启基线混淆
 
@@ -557,7 +555,7 @@ Bugly基线版本
 
 基准包的代码：
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-98feb42103fea6cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/809/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-98feb42103fea6cb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/809/format/webp)
 
 base包的代码
 
@@ -565,7 +563,7 @@ base包的代码
 
 补丁包（patch）的代码：
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-240cfc77f61375d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/864/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-240cfc77f61375d8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/864/format/webp)
 
 pacth代码
 
@@ -575,7 +573,7 @@ pacth代码
 
 这里需要注意的：**基准包目录必须是你上次生成的base包**，注意这里是按照时间命名的，检查是否正确，tinkerId 需要生成patch包必须使用 tinkerId="patch-base版本号对应"
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-a64d7ab07daa5c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-a64d7ab07daa5c8b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/672/format/webp)
 
 patch补丁生成配置
 
@@ -583,7 +581,7 @@ patch补丁生成配置
 
 **执行构建补丁包的task**
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-b780164ec7ec64b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/413/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-b780164ec7ec64b6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/413/format/webp)
 
 patch补丁包的task
 
@@ -593,7 +591,7 @@ patch补丁包的task
 
 生成的补丁包在**build/outputs/patch**目录下，其中7zip.apk就是我们需要使用的补丁包：
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-ab5840f13e69cce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-ab5840f13e69cce3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/340/format/webp)
 
 补丁包目录
 
@@ -601,7 +599,7 @@ patch补丁包的task
 
 打开补丁包可以看到里面会有一个YAPATCH.MF，这里面包含了我们是从base版本到patch版本：以及app的version信息
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-e7e5e53f305c116b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/935/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-e7e5e53f305c116b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/935/format/webp)
 
 补丁包
 
@@ -609,7 +607,7 @@ patch补丁包的task
 
 #### 4、上传补丁包到平台
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-d881c2ae500820d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-d881c2ae500820d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
 
 
 
@@ -617,9 +615,7 @@ patch补丁包的task
 
 发布patch版本，选择补丁文件之后会自动从补丁包的YAPATCH.MF去寻找base版本以及app版本，注意这里的base版本必须联网上报（必须在联网的情况下启动app），才可以上传补丁成功。如果没有
 
-
-
-![img](https:////upload-images.jianshu.io/upload_images/4029470-38385f1fe34ea95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/484/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-38385f1fe34ea95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/484/format/webp)
 
 上传补丁包
 
@@ -635,7 +631,7 @@ patch补丁包的task
 
 下发补丁之后：
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-0e8102d847695593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/999/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-0e8102d847695593.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/999/format/webp)
 
 
 
@@ -651,7 +647,7 @@ patch补丁包的task
 
 **基准包执行效果图：**
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-bead66cfddf6d44a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-bead66cfddf6d44a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/475/format/webp)
 
 基准包效果图
 
@@ -659,7 +655,7 @@ patch补丁包的task
 
 修复之后的效果图：
 
-![img](https:////upload-images.jianshu.io/upload_images/4029470-667ddbcbd4a627af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/415/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-667ddbcbd4a627af.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/415/format/webp)
 
 补丁合成效果图
 
@@ -669,9 +665,7 @@ patch补丁包的task
 
 如果你的手机root的话，可以在data/data/app包名目录下有一个tinker目录，里面就有对于的patch补丁包下载在里面。
 
-
-
-![img](https:////upload-images.jianshu.io/upload_images/4029470-e911bbcc3ef56a47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/998/format/webp)
+![img](https://upload-images.jianshu.io/upload_images/4029470-e911bbcc3ef56a47.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/998/format/webp)
 
 补丁包生效统计
 
