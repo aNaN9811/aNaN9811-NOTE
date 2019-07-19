@@ -525,10 +525,6 @@ Bugly基线版本
 
 **这个会在build/outputs/bakApk路径下生成每次编译的基准包、混淆配置文件、资源Id文件，如下图所示：**
 
-
-
-
-
 ![img](https://upload-images.jianshu.io/upload_images/4029470-64647219ab1e80b1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/344/format/webp)
 
 生成的基准Apk目录
