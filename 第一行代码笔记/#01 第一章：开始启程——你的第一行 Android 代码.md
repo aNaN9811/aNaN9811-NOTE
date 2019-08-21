@@ -36,25 +36,114 @@ Linux内核层：为各种硬件提供了底层的驱动
 
 JDK：JDK是Java语言的软件开发工具包，它包含了java的运行环境、工具集合、基础类库等内容
 
-Android SDK：Android SDK是谷歌提供的Android开发工具包，在开发Android程序是，我们需要通过引入该工具包来使用Android的相关API
+Android SDK：Android SDK是谷歌提供的Android开发工具包，在开发Android程序时，我们需要通过引入该工具包来使用Android的相关API
 
 Android Studio
 
 ### 分析第一个Android程序
 
+1、.gradle 和 .idea
+
+Android Studio 自动生成的一些文件
+
+
+
+2、app
+
+项目中的代码、资源等内容几乎都是放置在这个目录下面
+
+- build：编译时自动生成的文件
+- libs：第三方 Jar 包
+- AndroidManifest.xml：整个 Android 项目的配置文件，在程序中定义的所有四大组件都需要在这个文件里注册，另外还可以在这个文件中给应用程序添加权限声明
+- proguard-rules.pro：用于指定项目代码的混淆规则，当代码开发完成后打成安装包文件，如果不希望代码被别人破解，通常会将代码进行混淆，从而让破解者难以阅读
+- res：drawable 开头的文件夹都是用来放图片的，mipmap 开头的文件夹都是用来放应用图标的，values 开头的文件夹都是用来放字符串、样式、颜色等配置的，layout 文件夹是用来放布局文件的
+
+```java
+apply plugin: 'com.android.application'
+```
+
+- build.gradle：第一行应用了插件，一般有两种值可以选 com.android.application 表示一个应用程序模块，com.android.library 表示这是一个库模块。区别在于应用程序模块可以直接运行，库模块只能作为代码库依附于别的应用程序来运行
+
+- 其他文件和外层一样功能
+
+
+
+3、build
+
+编译时自动生成的文件
+
+
+
+4、gradle
+
+包含了 gradle wrappper 的配置文件，设置里面 Gradle 里包含了缓存目录
+
+
+
+5、.gitignore
+
+用来将指定的目录或文件排除在版本控制之外的
+
+
+
+6、build.gradle
+
+项目全局的 gradle 构建脚本
+
+- repositories：jcenter() 是一个代码仓库，声明了这行配置之后就可以在项目中使用 jcenter 上的开源项目
+- classpath：声明 Gradle 插件来专门构建 Android 项目
+
+
+
+7、gradle.properties
+
+全局的 gradle 配置文件，这里配置的属性将会影响到项目中所有的 gradle 编译脚本
+
+
+
+8、gradlew 和 gradlew.bat
+
+用来在命令行界面中执行 gradle 命令的，其中 gradlew 是在 Linux 或 Mac 系统中使用的，gradlew.bat 是在 Windows 中使用的
+
+
+
+9、***.iml
+
+iml 文件是所有 IntelliJ IDEA 项目都会自动生成的一个文件
+
+
+
+10、local.properties
+
+用于指定本机中的 Android SDK 路径
+
+
+
+11、settings.gradle
+
+用于指定项目中所有引入的模块
+
+
+
 ```java
 //HelloWorld/app/src/res/AndroidManifest.xml
 <activity android:name=".HelloWorldActivity">
             <intent-filter>
+            	//android.intent.action.MAIN 决定应用程序最先启动的 Activity
                 <action android:name="android.intent.action.MAIN" />
+                //android.intent.category.LAUNCHER 决定应用程序是否显示在程序列表里
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 </activity>
 ```
 
-##### 这段代码表示对HelloWorldActivity这个活动进行注册，没有在AndroidManifest.xml里注册的活动是不能使用的。
+**这段代码表示对HelloWorldActivity这个活动进行注册，没有在AndroidManifest.xml里注册的活动是不能使用的。**
 
 其中intent-filter里面的两行代码非常重要，两行代码表示HelloWorldActivity是这个项目的主活动，在手机上点击应用图标，首先启动的就是这个活动。
+
+通过实验后，发现 MAIN 与 LAUNCHER 并不是单纯的各管各的事情；我测试的结果是，如果一个应用没有 LAUNCHER则该 apk 仍能安装到设备上，但是在桌面中图标中看不到。如果给那个 Activity 设定了 LAUNCHER，且同时设定了MAIN，则这个 Activity 就可出现在程序图标中；如果没有 MAIN，则不知启动哪个 Activity，故也不会有图标出现。可见，MAIN 指的是点击图标后启动哪个Activity。
+
+当然Main可以给多个 Activity 设定，但只设定 MAIN 不设定 LAUNCHER，仍然无法进入 Activity。android.intent.action.MAIN 标记了启动 Application 时先启动那个 Activity，若有多个 android.intent.action.MAIN，则先启动 mainfest 里面第一个出现的 android.intent.action.MAIN
 
 ```java
 //HelloWorld/app/src/main/java/com.example.helloworld/HelloWorldActivity
@@ -70,7 +159,7 @@ public class HelloWorldActivity extends AppCompatActivity {
 
 HelloWorldActivity是继承自AppCompatActivity的，这是一种向下兼容的Activity，可以将Activity在各个系统版本中增加的特性功能最低兼容到Android2.1系统。
 
-Activity是Android系统提供的一个活动基类，我们项目中所有的活动都必须继承它或者它的子类才能拥有活动的特性（AppCompatActivity是Activity的子类）
+Activity 是 Android 系统提供的一个活动基类，我们项目中所有的活动都必须继承它或者它的子类才能拥有活动的特性（AppCompatActivity是Activity的子类）
 
 Android程序的设计讲究逻辑和视图的分离，所以不推荐在活动中直接编写界面，而应该在布局文件中编写界面，然后再活动中引入进来。//onCreate（）方法的第二行调用了setContentView（）方法，就是这个方法引入了hello_world_layout布局。
 
@@ -232,3 +321,17 @@ Log.w()：打印一些警告信息，warn
 Log.e()：打印程序中的错误信息，error
 
 Log.d（）方法中传入了两个参数：第一个参数是 tag ，一般传入当前的类名就好，主要用于对打印信息进行过滤；第二参数是 msg ，即想打印的具体内容
+
+
+
+
+
+在 onCreate() 方法外面输入 logt 然后按下 Tab 键就会自动生成一个 TAG 常量
+
+输入 logd，然后按下 Tab 键就会自动补全一条完整的打印语句
+
+
+
+
+
+logcat过滤器：Show only selected application 表示当前选中的程序日志，Firebase 是谷歌提供的一个分析工具，No Filters 相当于没有过滤器，会把所有日志都显示出来

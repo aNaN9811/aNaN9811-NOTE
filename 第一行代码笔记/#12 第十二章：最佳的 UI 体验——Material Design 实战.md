@@ -53,7 +53,7 @@ Toolbar 的强大功能之处在于它不仅继承了 ActionBar 的所有功能�
 </resources>
 ```
 
-现在我们准备使用 Toolbar 来替代 ActionBar，因此需要指定一个不带 ActionBar 的主题，通常有 Theme.AppCompat.NoActionBar 和 Theme.AppCompat.Light.NoActionBar 表示淡色主题，它会将界面的主体颜色设成深色，配称颜色设成淡色。而 Theme.AppCompat.Light.NoActionBar 表示淡色主题，它会将界面的主体颜色设成淡色，陪衬颜色设成深色。由于我们之前的程序一直都是以淡色为主的，所以就选用淡色主题
+现在我们准备使用 Toolbar 来替代 ActionBar，因此需要指定一个不带 ActionBar 的主题，通常有 Theme.AppCompat.NoActionBar 和 Theme.AppCompat.Light.NoActionBar 表示淡色主题，它会将界面的主体颜色设成深色，陪衬颜色设成淡色。而 Theme.AppCompat.Light.NoActionBar 表示淡色主题，它会将界面的主体颜色设成淡色，陪衬颜色设成深色。由于我们之前的程序一直都是以淡色为主的，所以就选用淡色主题
 
 ```java
 <resources>
@@ -71,7 +71,7 @@ Toolbar 的强大功能之处在于它不仅继承了 ActionBar 的所有功能�
 
 AppTheme 其他属性
 
-![](F:\Android笔记\第十二章笔记图片\微信图片_20190422003350.jpg)
+![](E:\Android笔记\第十二章笔记图片\微信图片_20190422003350.jpg)
 
 
 
@@ -85,7 +85,7 @@ AppTheme 其他属性
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-	//定义一个 Toolbar 控件，这个控件是由 appcompat-v7 库提供的。这里我们给 Toolbar 指定了一个 id ，将它的宽度设置为 match_parent，高度设置为 avtionBar 的高度，背景色设置为 colorPrimary。不过由于我们刚才在 style.xml 中将程序的主题指定成了淡色主题，因此 Toolbar 现在也是淡色主题，而 Toolbar 上面的各种元素就会自动使用深色系，这是为了和主题颜色区别开。但是这个效果看起来就会很差，之前使用 ActionBar 时文字都是白色的，现在变成黑色的会很难看。那么为了能让 Toolbar 单独使用深色主题，这里我们使用 android:theme 属性，将 Toolbar 的主题指定成了 ThemeOverlay.AppCompat.Dark.ActionBar。但是这样又会出现新的问题，如果 Toolbar 中有菜单按钮，那么弹出的菜单项也会变成深色主题，这样就再次变得十分难看，于是这里使用了 app:popupTheme 属性单独将弹出的菜单项指定成了淡色主题
+	//定义一个 Toolbar 控件，这个控件是由 appcompat-v7 库提供的。这里我们给 Toolbar 指定了一个 id ，将它的宽度设置为 match_parent，高度设置为 actionBar 的高度，背景色设置为 colorPrimary。不过由于我们刚才在 style.xml 中将程序的主题指定成了淡色主题，因此 Toolbar 现在也是淡色主题，而 Toolbar 上面的各种元素就会自动使用深色系，这是为了和主题颜色区别开。但是这个效果看起来就会很差，之前使用 ActionBar 时文字都是白色的，现在变成黑色的会很难看。那么为了能让 Toolbar 单独使用深色主题，这里我们使用 android:theme 属性，将 Toolbar 的主题指定成了 ThemeOverlay.AppCompat.Dark.ActionBar。但是这样又会出现新的问题，如果 Toolbar 中有菜单按钮，那么弹出的菜单项也会变成深色主题，这样就再次变得十分难看，于是这里使用了 app:popupTheme 属性单独将弹出的菜单项指定成了淡色主题
 	//之所以使用 app:popupTheme 也是上面所讲的原因，为了兼容 Android 5.0 以下的系统
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -288,7 +288,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            //在 onOptionsItemSelected() 方法中中对 HomeAsUp 按钮的点击事件进行处理，HomeAsUp 按钮的 id 永远都是 android.R.id.home，然后调用 DrawerLayout 的 openDrawer() 来将滑动菜单展示出来，该方法要求传入一个 Gravity 参数，为了保证这里了的行为和 XML 中定义的一直，我们传入 GravityCompat.START
+            //在 onOptionsItemSelected() 方法中中对 HomeAsUp 按钮的点击事件进行处理，HomeAsUp 按钮的 id 永远都是 android.R.id.home，然后调用 DrawerLayout 的 openDrawer() 来将滑动菜单展示出来，该方法要求传入一个 Gravity 参数，为了保证这里了的行为和 XML 中定义的一致，我们传入 GravityCompat.START
             case android.R.id.home:
                 mDrawerLayout.openDrawer(GravityCompat.START);
                 break;
